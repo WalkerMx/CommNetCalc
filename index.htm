@@ -65,7 +65,7 @@
          }
       </style>
    </head>
-   <body>
+   <body onload="drawCanvas(0,0,0,0,0,0)">
       <div class="center">
          <div class="topnav">
             <h1>CommNet Calculator</h1>
@@ -335,9 +335,7 @@
 		ctx.fillText("V1", 40, 50);
 		ctx.fillText("V2", 320, 50);
 		ctx.fillText("KB", 180, 220);
-
 		ctx.font = "18px Arial";
-
 		ctx.beginPath();
 		ctx.arc(40, 40, 30, 0, 2 * Math.PI);
 		ctx.strokeStyle = col1;
@@ -355,7 +353,6 @@
 		ctx.beginPath();
 		canvas_arrow(ctx,290,65,200,175);
 		ctx.stroke();
-
 		ctx.beginPath();
 		ctx.arc(320, 40, 30, 0, 2 * Math.PI);
 		ctx.strokeStyle = col2;
@@ -373,13 +370,11 @@
 		ctx.beginPath();
 		canvas_arrow(ctx,70,65,160,175);
 		ctx.stroke();
-
 		ctx.beginPath();
 		ctx.arc(180, 210, 30, 0, 2 * Math.PI);
 		ctx.strokeStyle = col3;
 		ctx.fillStyle = col3;
 		ctx.stroke();
-
 		if (v2d != 0) {
 			ctx.fillText(v2d, 280, 140);
 		} else {
@@ -397,10 +392,6 @@
 		ctx.beginPath();
 		canvas_arrow(ctx,60,75,150,185);
 		ctx.stroke();
-
-
-
-
 	}
 	function canvas_arrow(context, fromx, fromy, tox, toy) {
 		var headlen = 8;
