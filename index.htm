@@ -177,7 +177,7 @@
       }
       
       function getV1ACE() {
-      	var ACE = ((vGet("v1communotron16") * 5000)+(vGet("v1communotronDTSM1") * 1500000000)+(vGet("v1communotronHG55") * 11250000000)+(vGet("v1communotron8888") * 75000000000)+(vGet("v1HG5") * 3750000)+(vGet("v1RA2") * 1500000000)+(vGet("v1RA15") * 11250000000)+(vGet("v1RA100") * 75000000000)) / ((vGet("v1communotron16") * 5000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
+      	var ACE = ((vGet("v1communotron16") * 500000)+(vGet("v1communotronDTSM1") * 1500000000)+(vGet("v1communotronHG55") * 11250000000)+(vGet("v1communotron8888") * 75000000000)+(vGet("v1HG5") * 3750000)+(vGet("v1RA2") * 1500000000)+(vGet("v1RA15") * 11250000000)+(vGet("v1RA100") * 75000000000)) / ((vGet("v1communotron16") * 5000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
       	if (isNaN(ACE)) {
       		return 0;
       	} else {
@@ -185,7 +185,7 @@
       	}
       }
       function getV2ACE() {
-      	var ACE = ((vGet("v2communotron16") * 5000)+(vGet("v2communotronDTSM1") * 1500000000)+(vGet("v2communotronHG55") * 11250000000)+(vGet("v2communotron8888") * 75000000000)+(vGet("v2HG5") * 3750000)+(vGet("v2RA2") * 1500000000)+(vGet("v2RA15") * 11250000000)+(vGet("v2RA100") * 75000000000)) / ((vGet("v2communotron16") * 5000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
+      	var ACE = ((vGet("v2communotron16") * 500000)+(vGet("v2communotronDTSM1") * 1500000000)+(vGet("v2communotronHG55") * 11250000000)+(vGet("v2communotron8888") * 75000000000)+(vGet("v2HG5") * 3750000)+(vGet("v2RA2") * 1500000000)+(vGet("v2RA15") * 11250000000)+(vGet("v2RA100") * 75000000000)) / ((vGet("v2communotron16") * 5000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
       	if (isNaN(ACE)) {
       		return 0;
       	} else {
@@ -209,17 +209,17 @@
       	}
       }
       function getV1SumA() {
-      	var SumA = ((vGet("v1communotron16") * 5000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
+      	var SumA = ((vGet("v1communotron16") * 500000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
       	if (SumA == 0 && (vGet("v1communotron16s") > 0)) {
-      		return 5000;
+      		return 500000;
       	} else {
       		return SumA;
       	}
       }
       function getV2SumA() {
-      	var SumA = ((vGet("v2communotron16") * 5000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
+      	var SumA = ((vGet("v2communotron16") * 500000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
       	if (SumA == 0 && (vGet("v2communotron16s") > 0)) {
-      		return 5000;
+      		return 500000;
       	} else {
       		return SumA;
       	}
@@ -246,9 +246,9 @@
       	} else if (vGet("v1HG5") > 0) {
       		return 5000000;
       	} else if (vGet("v1communotron16s") > 0) {
-      		return 5000;
+      		return 500000;
       	} else if (vGet("v1communotron16") > 0) {
-      		return 5000;
+      		return 500000;
       	} else {
       		return 0;
       	}
@@ -269,9 +269,9 @@
       	} else if (vGet("v2HG5") > 0) {
       		return 5000000;
       	} else if (vGet("v2communotron16s") > 0) {
-      		return 5000;
+      		return 500000;
       	} else if (vGet("v2communotron16") > 0) {
-      		return 5000;
+      		return 500000;
       	} else {
       		return 0;
       	}
