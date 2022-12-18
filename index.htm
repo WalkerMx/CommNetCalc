@@ -24,6 +24,8 @@
          }
          input {
          width: 60px;
+         height: 22px;
+         margin: 2px;
          }
          textarea {
          width: 100%;
@@ -215,7 +217,7 @@
       	}
       }
       function getV2SumA() {
-      	var SumA = ((vGet("v2communotron16") * 5000)+(vGet("v2communotron16s") * 5000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
+      	var SumA = ((vGet("v2communotron16") * 5000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
       	if (SumA == 0 && (vGet("v2communotron16s") > 0)) {
       		return 5000;
       	} else {
