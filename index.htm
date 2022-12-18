@@ -5,6 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<style>
+		:root {
+			--body-color: #ddd;
+			--active-color: #4CAF50;
+			--active-hover-color: #5CBF60;
+			--background-shadow: #333;
+			--text-color: #f2f2f2;
+		}
 		html, body {	
 			margin: 0;
 			padding: 0;
@@ -40,11 +47,28 @@
 			grid-gap: 5px;  
 			grid-template-columns: repeat(auto-fit, 350px);
 		}
+		.topnav {
+			overflow: hidden;
+			color: var(--text-color);
+			background-color: var(--background-shadow);
+			position: sticky;
+			padding-left: 10px;
+		}
+		.topfoot {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			background-color: var(--background-shadow);
+			color: var(--text-color);
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
 	</style>
 	<body>
-		<div class="center"><div class="content">
-
-			<h1>CommNet Calculator</h1>
+		<div class="center"><div class="topnav">
+				<h1>CommNet Calculator</h1>
+			</div><div class="content">
 
 			<br />
 
@@ -121,6 +145,9 @@
 
 			<textarea id="report" rows="16" cols="100" readonly></textarea>
 
+		</div>
+		<div class="topfoot">
+    			&copy; Copyright WalkerMx <script>document.write(new Date().getFullYear())</script> All Rights Reserved.
 		</div></div>
 
 	</body>
