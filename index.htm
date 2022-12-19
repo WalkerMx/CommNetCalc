@@ -1,410 +1,379 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>CommNet Calculator</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-         :root {
-         --body-color: #ddd;
-         --active-color: #4CAF50;
-         --active-hover-color: #5CBF60;
-         --background-shadow: #333;
-         --text-color: #f2f2f2;
-         }
-         html, body {	
-         margin: 0;
-         padding: 0;
-         height: 100%;
-         background-color: #444;
-         font-family: Helvetica, Arial, Verdana, sans-serif;
-         }
-         label {
-         display: inline-block;
-         width: 200px;
-         }
-         input {
-         width: 60px;
-         height: 22px;
-         margin: 2px;
-         }
-         textarea {
-         width: 100%;
-         max-width: 350px;
-         }
-         .center {
-         margin: auto;
-         max-width: 1000px;
-         min-height: 100%;
-         position: relative;
-         background-color: #fff;
-         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-         }
-         .content {
-         padding: 10px;
-         padding-bottom: 60px;
-         }
-         .container {  
-         display: grid;  
-         grid-gap: 10px;  
-         grid-template-columns: repeat(auto-fit, 350px);
-         }
-         .topnav {
-         overflow: hidden;
-         color: var(--text-color);
-         background-color: var(--background-shadow);
-         position: sticky;
-         padding-left: 10px;
-         }
-         .topfoot {
-         position: absolute;
-         bottom: 0;
-         width: 100%;
-         background-color: var(--background-shadow);
-         color: var(--text-color);
-         text-align: center;
-         padding-top: 10px;
-         padding-bottom: 10px;
-         }
-      </style>
-   </head>
-   <body onload="calcConnections()">
-      <div class="center">
-         <div class="topnav">
-            <h1>CommNet Calculator</h1>
-         </div>
-         <div class="content">
-            <br />
-            <div id="v0">
-               <h3>KSC DSN</h3>
-               <form>
-                  <label for="DSN">KSC DSN Strength:</label>
-                  <select name="DSN" id="DSN">
-                     <option value="2g">2G</option>
-                     <option value="50g">50G</option>
-                     <option value="250g" selected>250G</option>
-                  </select>
-               </form>
-            </div>
-            <br />
-            <div class="container">
-               <div id="v1">
-                  <h3>Vessel 1</h3>
-                  <form>
-                     <label for="v1communotron16">Communotron 16</label>
-                     <input type="number" id="v1communotron16" name="v1communotron16" value="0" min="0" max="64"><br />
-                     <label for="v1communotron16s">Communotron 16-S</label>
-                     <input type="number" id="v1communotron16s" name="v1communotron16s" value="0" min="0" max="64"><br />
-                     <label for="v1communotronDTSM1">Communotron DTS-M1</label>
-                     <input type="number" id="v1communotronDTSM1" name="v1communotronDTSM1" value="0" min="0" max="64"><br />
-                     <label for="v1communotronHG55">Communotron HG-55</label>
-                     <input type="number" id="v1communotronHG55" name="v1communotronHG55" value="0" min="0" max="64"><br />
-                     <label for="v1communotron8888">Communotron 88-88</label>
-                     <input type="number" id="v1communotron8888" name="v1communotron8888" value="0" min="0" max="64"><br />
-                     <label for="v1HG5">HG-5 High Gain Antenna</label>
-                     <input type="number" id="v1HG5" name="v1HG5" value="0" min="0" max="64"><br />
-                     <label for="v1RA2">RA-2 Relay Antenna</label>
-                     <input type="number" id="v1RA2" name="v1RA2" value="0" min="0" max="64"><br />
-                     <label for="v1RA15">RA-15 Relay Antenna</label>
-                     <input type="number" id="v1RA15" name="v1RA15" value="0" min="0" max="64"><br />
-                     <label for="v1RA100">RA-100 Relay Antenna</label>
-                     <input type="number" id="v1RA100" name="v1RA100" value="0" min="0" max="64"><br />
-                  </form>
-               </div>
-               <div id="v2">
-                  <h3>Vessel 2</h3>
-                  <form>
-                     <label for="v2communotron16">Communotron 16</label>
-                     <input type="number" id="v2communotron16" name="v2communotron16" value="0" min="0" max="64"><br />
-                     <label for="v2communotron16s">Communotron 16-S</label>
-                     <input type="number" id="v2communotron16s" name="v2communotron16s" value="0" min="0" max="64"><br />
-                     <label for="v2communotronDTSM1">Communotron DTS-M1</label>
-                     <input type="number" id="v2communotronDTSM1" name="v2communotronDTSM1" value="0" min="0" max="64"><br />
-                     <label for="v2communotronHG55">Communotron HG-55</label>
-                     <input type="number" id="v2communotronHG55" name="v2communotronHG55" value="0" min="0" max="64"><br />
-                     <label for="v2communotron8888">Communotron 88-88</label>
-                     <input type="number" id="v2communotron8888" name="v2communotron8888" value="0" min="0" max="64"><br />
-                     <label for="v2HG5">HG-5 High Gain Antenna</label>
-                     <input type="number" id="v2HG5" name="v2HG5" value="0" min="0" max="64"><br />
-                     <label for="v2RA2">RA-2 Relay Antenna</label>
-                     <input type="number" id="v2RA2" name="v2RA2" value="0" min="0" max="64"><br />
-                     <label for="v2RA15">RA-15 Relay Antenna</label>
-                     <input type="number" id="v2RA15" name="v2RA15" value="0" min="0" max="64"><br />
-                     <label for="v2RA100">RA-100 Relay Antenna</label>
-                     <input type="number" id="v2RA100" name="v2RA100" value="0" min="0" max="64"><br />
-                  </form>
-               </div>
-            </div>
-            <br />
-            <div id="submit">
-               <button onclick="calcConnections()">Calculate</button> 
-            </div>
-            <br />
-		<div class="container">
-		   <canvas id="kspCanvas" width="360" height="250">Your browser does not support the HTML canvas tag.</canvas>
-         	   <textarea id="report" rows="14" cols="80" readonly></textarea>
+	<head>
+		<title>CommNet Calculator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			:root {
+				--body-color: #ddd;
+				--active-color: #4CAF50;
+				--active-hover-color: #5CBF60;
+				--background-shadow: #333;
+				--text-color: #f2f2f2;
+			}
+			html, body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				background-color: #444;
+				font-family: Helvetica, Arial, Verdana, sans-serif;
+			}
+			label {
+				display: inline-block;
+				width: 200px;
+			}
+			input {
+				width: 60px;
+				height: 21px;
+				margin: 2px;
+			}
+			textarea {
+				width: 100%;
+				max-width: 350px;
+			}
+			.center {
+				margin: auto;
+				max-width: 800px;
+				min-height: 100%;
+				position: relative;
+				background-color: #fff;
+				box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+			}
+			.content {
+				padding: 25px;
+				padding-bottom: 50px;
+			}
+			.container {
+				display: grid;
+				grid-gap: 10px;
+				grid-template-columns: repeat(auto-fit, 350px);
+			}
+			.topnav {
+				overflow: hidden;
+				color: var(--text-color);
+				background-color: var(--background-shadow);
+				position: sticky;
+				padding-left: 10px;
+			}
+			.topfoot {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				background-color: var(--background-shadow);
+				color: var(--text-color);
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body onload="calcConnections()">
+		<div class="center">
+			<div class="topnav">
+				<h1>CommNet Calculator</h1>
+			</div>
+			<div class="content">
+				<div id="v0">
+					<h3>KSC DSN</h3>
+					<form>
+						<label for="DSN">KSC DSN Strength:</label>
+						<select name="DSN" id="DSN">
+							<option value="2g">2G</option>
+							<option value="50g">50G</option>
+							<option value="250g" selected>250G</option>
+						</select>
+					</form>
+				</div>
+				<br />
+				<div class="container">
+					<div id="v1">
+						<h3>Vessel 1</h3>
+						<form>
+							<label for="v1probeAnt">Probe Antenna</label>
+							<input type="number" id="v1probeAnt" name="v1probeAnt" value="0" min="0" max="64"><br />
+							<label for="v1communotron16">Communotron 16</label>
+							<input type="number" id="v1communotron16" name="v1communotron16" value="0" min="0" max="64"><br />
+							<label for="v1communotron16s">Communotron 16-S</label>
+							<input type="number" id="v1communotron16s" name="v1communotron16s" value="0" min="0" max="64"><br />
+							<label for="v1communotronDTSM1">Communotron DTS-M1</label>
+							<input type="number" id="v1communotronDTSM1" name="v1communotronDTSM1" value="0" min="0" max="64"><br />
+							<label for="v1communotronHG55">Communotron HG-55</label>
+							<input type="number" id="v1communotronHG55" name="v1communotronHG55" value="0" min="0" max="64"><br />
+							<label for="v1communotron8888">Communotron 88-88</label>
+							<input type="number" id="v1communotron8888" name="v1communotron8888" value="0" min="0" max="64"><br />
+							<label for="v1HG5">HG-5 High Gain Antenna</label>
+							<input type="number" id="v1HG5" name="v1HG5" value="0" min="0" max="64"><br />
+							<label for="v1RA2">RA-2 Relay Antenna</label>
+							<input type="number" id="v1RA2" name="v1RA2" value="0" min="0" max="64"><br />
+							<label for="v1RA15">RA-15 Relay Antenna</label>
+							<input type="number" id="v1RA15" name="v1RA15" value="0" min="0" max="64"><br />
+							<label for="v1RA100">RA-100 Relay Antenna</label>
+							<input type="number" id="v1RA100" name="v1RA100" value="0" min="0" max="64"><br />
+						</form>
+					</div>
+					<div id="v2">
+						<h3>Vessel 2</h3>
+						<form>
+							<label for="v2probeAnt">Probe Antenna</label>
+							<input type="number" id="v2probeAnt" name="v2probeAnt" value="0" min="0" max="64"><br />
+							<label for="v2communotron16">Communotron 16</label>
+							<input type="number" id="v2communotron16" name="v2communotron16" value="0" min="0" max="64"><br />
+							<label for="v2communotron16s">Communotron 16-S</label>
+							<input type="number" id="v2communotron16s" name="v2communotron16s" value="0" min="0" max="64"><br />
+							<label for="v2communotronDTSM1">Communotron DTS-M1</label>
+							<input type="number" id="v2communotronDTSM1" name="v2communotronDTSM1" value="0" min="0" max="64"><br />
+							<label for="v2communotronHG55">Communotron HG-55</label>
+							<input type="number" id="v2communotronHG55" name="v2communotronHG55" value="0" min="0" max="64"><br />
+							<label for="v2communotron8888">Communotron 88-88</label>
+							<input type="number" id="v2communotron8888" name="v2communotron8888" value="0" min="0" max="64"><br />
+							<label for="v2HG5">HG-5 High Gain Antenna</label>
+							<input type="number" id="v2HG5" name="v2HG5" value="0" min="0" max="64"><br />
+							<label for="v2RA2">RA-2 Relay Antenna</label>
+							<input type="number" id="v2RA2" name="v2RA2" value="0" min="0" max="64"><br />
+							<label for="v2RA15">RA-15 Relay Antenna</label>
+							<input type="number" id="v2RA15" name="v2RA15" value="0" min="0" max="64"><br />
+							<label for="v2RA100">RA-100 Relay Antenna</label>
+							<input type="number" id="v2RA100" name="v2RA100" value="0" min="0" max="64"><br />
+						</form>
+					</div>
+				</div>
+				<br />
+				<div id="submit">
+					<button onclick="calcConnections()">Calculate</button>
+				</div>
+				<br />
+				<div class="container">
+					<canvas id="kspCanvas" width="360" height="250">Your browser does not support the HTML canvas tag.</canvas>
+					<textarea id="report" rows="14" cols="80" readonly></textarea>
+				</div>
+			</div>
+			<div class="topfoot">
+				&copy; Copyright WalkerMx <script>document.write(new Date().getFullYear())</script> All Rights Reserved.
+			</div>
 		</div>
-         </div>
-         <div class="topfoot">
-            &copy; Copyright WalkerMx <script>document.write(new Date().getFullYear())</script> All Rights Reserved.
-         </div>
-      </div>
-   </body>
-   <script>
-      function calcConnections() {
-      	const textarea = document.getElementById('report');
-      	var vessel1t = getV1BestA() * ((getV1SumA() / getV1BestA()) ** getV1ACE());
-      	var vessel2t = getV2BestA() * ((getV2SumA() / getV2BestA()) ** getV2ACE());
-      	var vessel1r = getV1BestR() * ((getV1SumR() / getV1BestR()) ** getV1ACR());
-      	var vessel2r = getV2BestR() * ((getV2SumR() / getV2BestR()) ** getV2ACR());
-      	textarea.value = '';
-      	if (getV1SumA() > 0) {
-      		textarea.value += 'Vessel 1 Report' + '\n';
-      		textarea.value += 'Total Antenna Power: ' + getRoundedRange(vessel1t) + '\n';
-      		textarea.value += 'Total Relay Power: ' + getRoundedRange(vessel1r) + '\n';
-      		textarea.value += 'Max Distance from Kerbin: ' + getRoundedRange(getConnectionRange(vessel1t, getDSN())) + '\n';
-      		textarea.value += 'Max Relay to Kerbin: ' + getRoundedRange(getConnectionRange(vessel1r, getDSN())) + '\n';
-      		textarea.value += 'Max Distance from Vessel 2: ' + getRoundedRange(getConnectionRange(vessel1r, vessel2t)) + '\n\n';
-      	}
-      	if (getV2SumA() > 0) {
-      		textarea.value += 'Vessel 2 Report' + '\n';
-      		textarea.value += 'Total Antenna Power: ' + getRoundedRange(vessel2t) + '\n';
-      		textarea.value += 'Total Relay Power: ' + getRoundedRange(vessel2r) + '\n';
-      		textarea.value += 'Max Distance from Kerbin: ' + getRoundedRange(getConnectionRange(vessel2t, getDSN())) + '\n';
-      		textarea.value += 'Max Relay to Kerbin: ' + getRoundedRange(getConnectionRange(vessel2r, getDSN())) + '\n';
-      		textarea.value += 'Max Distance from Vessel 1: ' + getRoundedRange(getConnectionRange(vessel2r, vessel1t));
-      	}
-		drawCanvas(getRoundedRange(getConnectionRange(vessel1t, getDSN())),getRoundedRange(getConnectionRange(vessel1r, getDSN())),getRoundedRange(getConnectionRange(vessel1r, vessel2t)),getRoundedRange(getConnectionRange(vessel2t, getDSN())),getRoundedRange(getConnectionRange(vessel2r, getDSN())),getRoundedRange(getConnectionRange(vessel2r, vessel1t)));
-      }
-      
-      function getV1ACE() {
-      	var ACE = ((vGet("v1communotron16") * 500000)+(vGet("v1communotronDTSM1") * 1500000000)+(vGet("v1communotronHG55") * 11250000000)+(vGet("v1communotron8888") * 75000000000)+(vGet("v1HG5") * 3750000)+(vGet("v1RA2") * 1500000000)+(vGet("v1RA15") * 11250000000)+(vGet("v1RA100") * 75000000000)) / ((vGet("v1communotron16") * 500000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
-      	if (isNaN(ACE)) {
-      		return 0;
-      	} else {
-      		return ACE;
-      	}
-      }
-      function getV2ACE() {
-      	var ACE = ((vGet("v2communotron16") * 500000)+(vGet("v2communotronDTSM1") * 1500000000)+(vGet("v2communotronHG55") * 11250000000)+(vGet("v2communotron8888") * 75000000000)+(vGet("v2HG5") * 3750000)+(vGet("v2RA2") * 1500000000)+(vGet("v2RA15") * 11250000000)+(vGet("v2RA100") * 75000000000)) / ((vGet("v2communotron16") * 500000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
-      	if (isNaN(ACE)) {
-      		return 0;
-      	} else {
-      		return ACE;
-      	}
-      }
-      function getV1ACR() {
-      	var ACR = ((vGet("v1HG5") * 3750000)+(vGet("v1RA2") * 1500000000)+(vGet("v1RA15") * 11250000000)+(vGet("v1RA100") * 75000000000)) / ((vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
-      	if (isNaN(ACR)) {
-      		return 0;
-      	} else {
-      		return ACR;
-      	}
-      }
-      function getV2ACR() {
-      	var ACR = ((vGet("v2HG5") * 3750000)+(vGet("v2RA2") * 1500000000)+(vGet("v2RA15") * 11250000000)+(vGet("v2RA100") * 75000000000)) / ((vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
-      	if (isNaN(ACR)) {
-      		return 0;
-      	} else {
-      		return ACR;
-      	}
-      }
-      function getV1SumA() {
-      	var SumA = ((vGet("v1communotron16") * 500000)+(vGet("v1communotronDTSM1") * 2000000000)+(vGet("v1communotronHG55") * 15000000000)+(vGet("v1communotron8888") * 100000000000)+(vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
-      	if (SumA == 0 && (vGet("v1communotron16s") > 0)) {
-      		return 500000;
-      	} else {
-      		return SumA;
-      	}
-      }
-      function getV2SumA() {
-      	var SumA = ((vGet("v2communotron16") * 500000)+(vGet("v2communotronDTSM1") * 2000000000)+(vGet("v2communotronHG55") * 15000000000)+(vGet("v2communotron8888") * 100000000000)+(vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
-      	if (SumA == 0 && (vGet("v2communotron16s") > 0)) {
-      		return 500000;
-      	} else {
-      		return SumA;
-      	}
-      }
-      function getV1SumR() {
-      	return ((vGet("v1HG5") * 5000000)+(vGet("v1RA2") * 2000000000)+(vGet("v1RA15") * 15000000000)+(vGet("v1RA100") * 100000000000));
-      }
-      function getV2SumR() {
-      	return ((vGet("v2HG5") * 5000000)+(vGet("v2RA2") * 2000000000)+(vGet("v2RA15") * 15000000000)+(vGet("v2RA100") * 100000000000));
-      }
-      function getV1BestA() {
-      	if (vGet("v1communotron8888") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v1RA100") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v1communotronHG55") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v1RA15") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v1communotronDTSM1") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v1RA2") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v1HG5") > 0) {
-      		return 5000000;
-      	} else if (vGet("v1communotron16s") > 0) {
-      		return 500000;
-      	} else if (vGet("v1communotron16") > 0) {
-      		return 500000;
-      	} else {
-      		return 0;
-      	}
-      }
-      function getV2BestA() {
-      	if (vGet("v2communotron8888") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v2RA100") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v2communotronHG55") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v2RA15") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v2communotronDTSM1") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v2RA2") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v2HG5") > 0) {
-      		return 5000000;
-      	} else if (vGet("v2communotron16s") > 0) {
-      		return 500000;
-      	} else if (vGet("v2communotron16") > 0) {
-      		return 500000;
-      	} else {
-      		return 0;
-      	}
-      }
-      
-      function getV1BestR() {
-      	if (vGet("v1RA100") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v1RA15") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v1RA2") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v1HG5") > 0) {
-      		return 500000;
-      	} else {
-      		return 0;
-      	}
-      }
-      function getV2BestR() {
-      	if (vGet("v2RA100") > 0) {
-      		return 100000000000;
-      	} else if (vGet("v2RA15") > 0) {
-      		return 15000000000;
-      	} else if (vGet("v2RA2") > 0) {
-      		return 2000000000;
-      	} else if (vGet("v2HG5") > 0) {
-      		return 500000;
-      	} else {
-      		return 0;
-      	}
-      }
-      function vGet(val) {
-      	return document.getElementById(val).value;
-      }
-      function getConnectionRange(v1, v2) {
-      	return (v1 ** 0.5) * (v2 ** 0.5);
-      }
-      function getRoundedRange(val) {
-      	var vLen = Math.floor(val).toString().length;
-      	if (vLen >= 10) {return Math.floor(val / 1000000000).toString() + 'G'}
-      	if (vLen >= 7) {return Math.floor(val / 1000000).toString() + 'M'}
-      	if (vLen >= 4) {return Math.floor(val / 1000).toString() + 'k'}
-      	if (vLen < 4) {return val}
-      }
-      function getDSN() {
-      	var e = document.getElementById("DSN");
-      	var dsnText = e.options[e.selectedIndex].text;
-      	if (dsnText == '250G') {return 250000000000}
-      	if (dsnText == '50G') {return 50000000000}
-      	if (dsnText == '2G') {return 2000000000}
-      	return 0;
-      }
-	function drawCanvas(v1d, v1r, v1v2, v2d, v2r, v2v1) {
-		var col1 = '#f00';
-		var col2 = '#00f';
-		var col3 = '#0b0';
-		var c = document.getElementById("kspCanvas");
-		var ctx = c.getContext("2d");
-		ctx.clearRect(0, 0, c.width, c.height);
-		ctx.font = "30px Arial";
-		ctx.fillStyle = '#000';
-		ctx.textAlign = "center";
-		ctx.fillText("V1", 40, 50);
-		ctx.fillText("V2", 320, 50);
-		ctx.fillText("KB", 180, 220);
-		ctx.font = "18px Arial";
-		ctx.beginPath();
-		ctx.arc(40, 40, 30, 0, 2 * Math.PI);
-		ctx.strokeStyle = col1;
-		ctx.stroke();
-		if (v2v1 != 0) {
-			ctx.fillStyle = col1;
-			ctx.fillText(v2v1, 180, 65);
-			ctx.fillText(v2r, 220, 120);
-		} else {
-			ctx.strokeStyle = '#bbb';
+	</body>
+	<script>
+		function calcConnections() {
+		
+			const textarea = document.getElementById('report');
+		
+			var vessel1t = getBestA('v1') * ((getSumA('v1') / getBestA('v1')) ** getACE('v1'));
+			var vessel2t = getBestA('v2') * ((getSumA('v2') / getBestA('v2')) ** getACE('v2'));
+			var vessel1r = getBestR('v1') * ((getSumR('v1') / getBestR('v1')) ** getACR('v1'));
+			var vessel2r = getBestR('v2') * ((getSumR('v2') / getBestR('v2')) ** getACR('v2'));
+		
+			textarea.value = '';
+		
+			if (getSumA('v1') > 0) {
+				textarea.value += 'Vessel 1 Report' + '\n';
+				textarea.value += 'Total Antenna Power: ' + getRoundedRange(vessel1t) + '\n';
+				textarea.value += 'Total Relay Power: ' + getRoundedRange(vessel1r) + '\n';
+				textarea.value += 'Max Distance from Kerbin: ' + getRoundedRange(getConnectionRange(vessel1t, getDSN())) + '\n';
+				textarea.value += 'Max Relay to Kerbin: ' + getRoundedRange(getConnectionRange(vessel1r, getDSN())) + '\n';
+				textarea.value += 'Max Distance from Vessel 2: ' + getRoundedRange(getConnectionRange(vessel1r, vessel2t)) + '\n\n';
+			}
+		
+			if (getSumA('v2') > 0) {
+				textarea.value += 'Vessel 2 Report' + '\n';
+				textarea.value += 'Total Antenna Power: ' + getRoundedRange(vessel2t) + '\n';
+				textarea.value += 'Total Relay Power: ' + getRoundedRange(vessel2r) + '\n';
+				textarea.value += 'Max Distance from Kerbin: ' + getRoundedRange(getConnectionRange(vessel2t, getDSN())) + '\n';
+				textarea.value += 'Max Relay to Kerbin: ' + getRoundedRange(getConnectionRange(vessel2r, getDSN())) + '\n';
+				textarea.value += 'Max Distance from Vessel 1: ' + getRoundedRange(getConnectionRange(vessel2r, vessel1t));
+			}
+		
+			drawCanvas(getRoundedRange(getConnectionRange(vessel1t, getDSN())),getRoundedRange(getConnectionRange(vessel1r, getDSN())),getRoundedRange(getConnectionRange(vessel1r, vessel2t)),getRoundedRange(getConnectionRange(vessel2t, getDSN())),getRoundedRange(getConnectionRange(vessel2r, getDSN())),getRoundedRange(getConnectionRange(vessel2r, vessel1t)));
 		}
-		ctx.beginPath();
-		canvas_arrow(ctx,80,45,280,45);
-		ctx.stroke();
-		ctx.beginPath();
-		canvas_arrow(ctx,290,65,200,175);
-		ctx.stroke();
-		ctx.beginPath();
-		ctx.arc(320, 40, 30, 0, 2 * Math.PI);
-		ctx.strokeStyle = col2;
-		ctx.stroke();
-		if (v1v2 != 0) {
-			ctx.fillStyle = col2;
-			ctx.fillText(v1v2, 180, 30);
-			ctx.fillText(v1r, 135, 120);
-		} else {
-			ctx.strokeStyle = '#bbb';
+		
+		function getACE(vn) {
+			var ACE = ((vGet(vn+'communotron16') * 500000)+(vGet(vn+'communotronDTSM1') * 1500000000)+(vGet(vn+'communotronHG55') * 11250000000)+(vGet(vn+'communotron8888') * 75000000000)+(vGet(vn+'HG5') * 3750000)+(vGet(vn+'RA2') * 1500000000)+(vGet(vn+'RA15') * 11250000000)+(vGet(vn+'RA100') * 75000000000)) / ((vGet(vn+'communotron16') * 500000)+(vGet(vn+'communotronDTSM1') * 2000000000)+(vGet(vn+'communotronHG55') * 15000000000)+(vGet(vn+'communotron8888') * 100000000000)+(vGet(vn+'HG5') * 5000000)+(vGet(vn+'RA2') * 2000000000)+(vGet(vn+'RA15') * 15000000000)+(vGet(vn+'RA100') * 100000000000));
+			if (isNaN(ACE)) {
+				return 0;
+			} else {
+				return ACE;
+			}
 		}
-		ctx.beginPath();
-		canvas_arrow(ctx,280,35,80,35);
-		ctx.stroke();
-		ctx.beginPath();
-		canvas_arrow(ctx,70,65,160,175);
-		ctx.stroke();
-		ctx.beginPath();
-		ctx.arc(180, 210, 30, 0, 2 * Math.PI);
-		ctx.strokeStyle = col3;
-		ctx.fillStyle = col3;
-		ctx.stroke();
-		if (v2d != 0) {
-			ctx.fillText(v2d, 280, 140);
-		} else {
-			ctx.strokeStyle = '#bbb';
+		
+		function getACR(vn) {
+			var ACR = ((vGet(vn+'HG5') * 3750000)+(vGet(vn+'RA2') * 1500000000)+(vGet(vn+'RA15') * 11250000000)+(vGet(vn+'RA100') * 75000000000)) / ((vGet(vn+'HG5') * 5000000)+(vGet(vn+'RA2') * 2000000000)+(vGet(vn+'RA15') * 15000000000)+(vGet(vn+'RA100') * 100000000000));
+			if (isNaN(ACR)) {
+				return 0;
+			} else {
+				return ACR;
+			}
 		}
-		ctx.beginPath();
-		canvas_arrow(ctx,300,75,210,185);
-		ctx.stroke();
-		ctx.strokeStyle = col3;
-		if (v1d != 0) {
-			ctx.fillText(v1d, 75, 140);
-		} else {
-			ctx.strokeStyle = '#bbb';
+		
+		function getSumA(vn) {
+			var SumA = ((vGet(vn+'communotron16') * 500000)+(vGet(vn+'communotronDTSM1') * 2000000000)+(vGet(vn+'communotronHG55') * 15000000000)+(vGet(vn+'communotron8888') * 100000000000)+(vGet(vn+'HG5') * 5000000)+(vGet(vn+'RA2') * 2000000000)+(vGet(vn+'RA15') * 15000000000)+(vGet(vn+'RA100') * 100000000000));
+			if (SumA == 0) {
+				if ((vGet(vn+'communotron16s') > 0)) {
+					return 500000;
+				} else if ((vGet(vn+'probeAnt') > 0)) {
+					return 5000;
+				}
+			} else {
+				return SumA;
+			}
 		}
-		ctx.beginPath();
-		canvas_arrow(ctx,60,75,150,185);
-		ctx.stroke();
-	}
-	function canvas_arrow(context, fromx, fromy, tox, toy) {
-		var headlen = 8;
-		var dx = tox - fromx;
-		var dy = toy - fromy;
-		var angle = Math.atan2(dy, dx);
-		context.moveTo(fromx, fromy);
-		context.lineTo(tox, toy);
-		context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
-		context.moveTo(tox, toy);
-		context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
-	}
-   </script>
+		
+		function getSumR(vn) {
+			return ((vGet(vn+'HG5') * 5000000)+(vGet(vn+'RA2') * 2000000000)+(vGet(vn+'RA15') * 15000000000)+(vGet(vn+'RA100') * 100000000000));
+		}
+		
+		function getBestA(vn) {
+			if (vGet(vn+'communotron8888') > 0) {
+				return 100000000000;
+			} else if (vGet(vn+'RA100') > 0) {
+				return 100000000000;
+			} else if (vGet(vn+'communotronHG55') > 0) {
+				return 15000000000;
+			} else if (vGet(vn+'RA15') > 0) {
+				return 15000000000;
+			} else if (vGet(vn+'communotronDTSM1') > 0) {
+				return 2000000000;
+			} else if (vGet(vn+'RA2') > 0) {
+				return 2000000000;
+			} else if (vGet(vn+'HG5') > 0) {
+				return 5000000;
+			} else if (vGet(vn+'communotron16s') > 0) {
+				return 500000;
+			} else if (vGet(vn+'communotron16') > 0) {
+				return 500000;
+			} else if (vGet(vn+'probeAnt') > 0) {
+				return 5000;
+			} else {
+				return 0;
+			}
+		}
+		
+		function getBestR(vn) {
+			if (vGet(vn+'RA100') > 0) {
+				return 100000000000;
+			} else if (vGet(vn+'RA15') > 0) {
+				return 15000000000;
+			} else if (vGet(vn+'RA2') > 0) {
+				return 2000000000;
+			} else if (vGet(vn+'HG5') > 0) {
+				return 500000;
+			} else {
+				return 0;
+			}
+		}
+		
+		function vGet(val) {
+			return document.getElementById(val).value;
+		}
+		
+		function getConnectionRange(v1, v2) {
+			return (v1 ** 0.5) * (v2 ** 0.5);
+		}
+		
+		function getRoundedRange(val) {
+			var vLen = Math.floor(val).toString().length;
+			if (vLen >= 10) {return Math.floor(val / 1000000000).toString() + 'G'}
+			if (vLen >= 7) {return Math.floor(val / 1000000).toString() + 'M'}
+			if (vLen >= 4) {return Math.floor(val / 1000).toString() + 'k'}
+			if (vLen < 4) {return val}
+		}
+		
+		function getDSN() {
+			var e = document.getElementById('DSN');
+			var dsnText = e.options[e.selectedIndex].text;
+			if (dsnText == '250G') {return 250000000000}
+			if (dsnText == '50G') {return 50000000000}
+			if (dsnText == '2G') {return 2000000000}
+			return 0;
+		}
+		
+		function drawCanvas(v1d, v1r, v1v2, v2d, v2r, v2v1) {
+			var col1 = '#f00';
+			var col2 = '#00f';
+			var col3 = '#0b0';
+
+			var c = document.getElementById('kspCanvas');
+			var ctx = c.getContext('2d');
+
+			ctx.clearRect(0, 0, c.width, c.height);
+			ctx.font = '30px Arial';
+			ctx.fillStyle = '#000';
+			ctx.textAlign = 'center';
+			ctx.fillText('V1', 40, 50);
+			ctx.fillText('V2', 320, 50);
+			ctx.fillText('KB', 180, 220);
+
+			ctx.font = '18px Arial';
+
+			ctx.beginPath();
+			ctx.arc(40, 40, 30, 0, 2 * Math.PI);
+			ctx.strokeStyle = col1;
+			ctx.stroke();
+			if (v2v1 != 0) {
+				ctx.fillStyle = col1;
+				ctx.fillText(v2v1, 180, 65);
+				ctx.fillText(v2r, 220, 120);
+			} else {
+				ctx.strokeStyle = '#bbb';
+			}
+			ctx.beginPath();
+			canvas_arrow(ctx,80,45,280,45);
+			ctx.stroke();
+			ctx.beginPath();
+			canvas_arrow(ctx,290,65,200,175);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.arc(320, 40, 30, 0, 2 * Math.PI);
+			ctx.strokeStyle = col2;
+			ctx.stroke();
+			if (v1v2 != 0) {
+				ctx.fillStyle = col2;
+				ctx.fillText(v1v2, 180, 30);
+				ctx.fillText(v1r, 135, 120);
+			} else {
+				ctx.strokeStyle = '#bbb';
+			}
+			ctx.beginPath();
+			canvas_arrow(ctx,280,35,80,35);
+			ctx.stroke();
+			ctx.beginPath();
+			canvas_arrow(ctx,70,65,160,175);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.arc(180, 210, 30, 0, 2 * Math.PI);
+			ctx.strokeStyle = col3;
+			ctx.fillStyle = col3;
+			ctx.stroke();
+			if (v2d != 0) {
+				ctx.fillText(v2d, 280, 140);
+			} else {
+				ctx.strokeStyle = '#bbb';
+			}
+			ctx.beginPath();
+			canvas_arrow(ctx,300,75,210,185);
+			ctx.stroke();
+			ctx.strokeStyle = col3;
+			if (v1d != 0) {
+				ctx.fillText(v1d, 75, 140);
+			} else {
+				ctx.strokeStyle = '#bbb';
+			}
+			ctx.beginPath();
+			canvas_arrow(ctx,60,75,150,185);
+			ctx.stroke();
+		}
+		
+		function canvas_arrow(context, fromx, fromy, tox, toy) {
+			var headlen = 8;
+			var dx = tox - fromx;
+			var dy = toy - fromy;
+			var angle = Math.atan2(dy, dx);
+			context.moveTo(fromx, fromy);
+			context.lineTo(tox, toy);
+			context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+			context.moveTo(tox, toy);
+			context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+		}
+		
+	</script>
 </html>
