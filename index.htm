@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>CommNet Calculator</title>
+		<meta name="description" content="Advanced comunication calculator for Kerbal Space Program.">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			:root {
@@ -70,7 +71,7 @@
 	<body onload="calcConnections()">
 		<div class="center">
 			<div class="topnav">
-				<h1>CommNet Calculator</h1>
+				<h2>CommNet Calculator</h2>
 			</div>
 			<div class="content">
 				<div id="v0">
@@ -144,7 +145,7 @@
 				<br />
 				<div class="container">
 					<canvas id="kspCanvas" width="360" height="250">Your browser does not support the HTML canvas tag.</canvas>
-					<textarea id="report" rows="14" cols="80" readonly></textarea>
+					<textarea id="report" rows="14" cols="80" aria-label="Report" readonly></textarea>
 				</div>
 			</div>
 			<div class="topfoot">
